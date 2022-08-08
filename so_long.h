@@ -22,6 +22,7 @@ typedef	struct	s_data
 	char	**a;	
 	int		i;
 	void	*image;
+	void	*image2;
 	int		width;
 	int		height;
 }	t_data;

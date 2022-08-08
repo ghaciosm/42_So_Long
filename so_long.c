@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:56:43 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/08 14:46:26 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/08 16:46:04 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ int	key_states(int keycode, t_data *game)
 	return (0);
 }
 
+void	image_file(t_data *game)
+{
+	game -> image = mlx_xpm_file_to_image(game -> mlx, "1.xpm", &(game -> width), &(game -> height));
+	  put_image(game);
+
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*game;
@@ -80,8 +87,9 @@ int	main(int ac, char **av)
 		game -> mlx = mlx_init();
 		game -> win = mlx_new_window(game -> mlx, 64*game->x, 64*game->y, "title");
 		mlx_key_hook(game -> win, &key_states, game);
-		game -> image = mlx_xpm_file_to_image(game -> mlx, "2.xpm", &(game -> width), &(game -> height));
-		put_image(game);
+		image_file(game);
+		//game -> image = mlx_xpm_file_to_image(game -> mlx, "1.xpm", &(game -> width), &(game -> height));
+		//put_image(game);
 		mlx_loop(game -> mlx);
 	}
 	return (0);
