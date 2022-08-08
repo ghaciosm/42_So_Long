@@ -3,7 +3,6 @@
 
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
 # include "mlx/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
@@ -22,7 +21,22 @@ typedef	struct	s_data
 	void	*win;
 	char	**a;	
 	int		i;
+	void	*image;
+	int		width;
+	int		height;
 }	t_data;
 
+typedef struct	s_image
+{
+
+}	t_image;	
+
+int 	key_states(int keycode, t_data *game);
+int 	checker(char **av, t_data *game);
+int 	map_reader(int fd, t_data *game);
+int 	ft_error(char *str);
+int 	map_charcheck(t_data *game);
+int 	map_checker(t_data *game, int i);
+void	put_image(t_data *game);
 
 #endif
