@@ -39,5 +39,7 @@ int 	ft_error(char *str);
 int 	map_charcheck(t_data *game);
 int 	map_checker(t_data *game, int i);
 void	put_image(t_data *game);
+void    image_file(t_data *game);
+void    wall_create(t_data *game);
 
 #endif
