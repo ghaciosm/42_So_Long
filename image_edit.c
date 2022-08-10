@@ -42,10 +42,54 @@ void    wall_create(t_data *game)
     }
 }
 
+void	chr_create(t_data *game)
+{
+	int i;
+    int j;
+
+    i = 0;
+    while (i < game -> y)
+    {
+        j = 0;
+        while (game -> a[i][j] != '\0')
+        {
+            if (game -> a[i][j] == 'P')
+            {
+                mlx_put_image_to_window(game -> mlx, game -> win, game -> image3, j*64, i*64);
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
+void	collectible(t_data	*game)
+{
+	int i;
+    int j;
+
+    i = 0;
+    while (i < game -> y)
+    {
+        j = 0;
+        while (game -> a[i][j] != '\0')
+        {
+            if (game -> a[i][j] == 'C')
+                mlx_put_image_to_window(game -> mlx, game -> win, game -> image4, j*64 + 14, i*64 + 14);
+            j++;
+        }
+        i++;
+    }
+}
+
 void    image_file(t_data *game)
 {
-    game -> image = mlx_xpm_file_to_image(game -> mlx, "4.xpm", &(game -> width), &(game -> height));
+    game -> image = mlx_xpm_file_to_image(game -> mlx, "2.xpm", &(game -> width), &(game -> height));
     put_image(game);
-    game -> image2 = mlx_xpm_file_to_image(game -> mlx, "2.xpm", &(game -> width), &(game -> height));
+    game -> image2 = mlx_xpm_file_to_image(game -> mlx, "1.xpm", &(game -> width), &(game -> height));
     wall_create(game);
+	game -> image3 = mlx_xpm_file_to_image(game -> mlx, "3.xpm", &(game -> width), & (game -> height));
+	chr_create(game);
+	game -> image4 = mlx_xpm_file_to_image(game -> mlx, "4.xpm", &(game -> width), & (game -> height));
+	collectible(game);
 }

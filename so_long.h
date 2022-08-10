@@ -23,6 +23,8 @@ typedef	struct	s_data
 	int		i;
 	void	*image;
 	void	*image2;
+	void	*image3;
+	void	*image4;
 	int		width;
 	int		height;
 }	t_data;

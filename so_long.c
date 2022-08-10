@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:56:43 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/08 17:35:23 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/10 12:14:31 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ int	main(int ac, char **av)
 		game -> win = mlx_new_window(game -> mlx, 64*game->x, 64*game->y, "title");
 		mlx_key_hook(game -> win, &key_states, game);
 		image_file(game);
-		//game -> image = mlx_xpm_file_to_image(game -> mlx, "1.xpm", &(game -> width), &(game -> height));
-		//put_image(game);
 		mlx_loop(game -> mlx);
 	}
 	return (0);
