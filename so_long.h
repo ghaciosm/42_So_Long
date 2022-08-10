@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/10 13:55:12 by ghaciosm          #+#    #+#             */
+/*   Updated: 2022/08/10 13:57:12 by ghaciosm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -13,7 +25,7 @@
 # define D 2
 # define W 13
 
-typedef	struct	s_data
+typedef struct	s_data
 {
 	int		x;
 	int		y;
@@ -29,19 +41,14 @@ typedef	struct	s_data
 	int		height;
 }	t_data;
 
-typedef struct	s_image
-{
-
-}	t_image;	
-
-int 	key_states(int keycode, t_data *game);
-int 	checker(char **av, t_data *game);
-int 	map_reader(int fd, t_data *game);
-int 	ft_error(char *str);
-int 	map_charcheck(t_data *game);
-int 	map_checker(t_data *game, int i);
+int		key_states(int keycode, t_data *game);
+int		checker(char **av, t_data *game);
+int		map_reader(int fd, t_data *game);
+int		ft_error(char *str);
+int		map_charcheck(t_data *game);
+int		map_checker(t_data *game, int i);
 void	put_image(t_data *game);
-void    image_file(t_data *game);
-void    wall_create(t_data *game);
+void	image_file(t_data *game);
+void	wall_create(t_data *game);
 
 #endif
