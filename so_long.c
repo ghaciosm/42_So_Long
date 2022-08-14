@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:56:43 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/10 13:53:06 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:30:50 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,40 @@ int	checker(char **av, t_data *game)
 	return (0);
 }
 
-int	key_states(int keycode, t_data *game)
+int	eating_diamonds(t_data *game)
 {
-	if (keycode == ESC)
+	if(game->a[game->p_y / 64][game->p_x / 64] == 'C')
 	{
-		exit(0);
+		game->a[game->p_y / 64][game->p_x / 64] = '0';
 	}
-	(void)game;
 	return (0);
+}
+
+int	open_door(t_data *game)
+{
+	t_door	*door;
+	door->i = 0;
+	door->j = 0;
+	while (door->i < game->y)
+	{
+		while (game->a[i][j] != '\n')
+		{
+			if(a[i][j] == 'C')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
 	t_data	*game;
-
 	game = (t_data *)malloc(sizeof(t_data));
 	game -> width = 250;
 	game -> height = 250;
+	game -> g = 0;
 	if (ac == 2)
 	{
 		if (checker(av, game))
@@ -81,6 +98,7 @@ int	main(int ac, char **av)
 		game -> win = mlx_new_window(game -> mlx, 64 * game -> x, 64 * game -> y, "title");
 		mlx_key_hook(game -> win, &key_states, game);
 		image_file(game);
+		mlx_loop_hook(game -> mlx, &loop, game);
 		mlx_loop(game -> mlx);
 	}
 	return (0);
