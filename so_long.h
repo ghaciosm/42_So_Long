@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 13:55:12 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/12 15:41:09 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/15 13:51:36 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@
 # define S 1
 # define D 2
 # define W 13
+
+typedef struct	s_door
+{
+	void	*door1;
+	void	*door2;
+	void	*door3;
+	void	*door4;
+	int		i;
+	int		j;
+}	t_door;
+
+typedef struct	s_images
+{
+	void	**coin;
+}	t_images;
 
 typedef struct	s_data
 {
@@ -43,17 +58,11 @@ typedef struct	s_data
 	int		width;
 	int		height;
 	int		g;
-}	t_data;
+	t_door	*door;
+	int		a_c;
+	t_images	*images;
 
-typedef struct	s_door
-{
-	void	*door1;
-	void	*door2;
-	void	*door3;
-	void	*door4;
-	int		i;
-	int		j;
-}	t_door;
+}	t_data;
 
 int		key_states(int keycode, t_data *game);
 int		checker(char **av, t_data *game);
@@ -71,6 +80,10 @@ int		key_states(int keycode, t_data *game);
 int		key_states2(int keycode, t_data *game);
 int		eating_diamonds(t_data *game);
 void    door(t_data  *game);
-void    open_door(t_data *game, t_door *door);
+int		open_door(t_data *game);
+void    open_door2(t_data *game);
+void    image_coin(t_data *game);
+void    coin_put(t_data *game);
+void    coin_animation(t_data *game);
 
 #endif

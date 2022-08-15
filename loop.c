@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:13:12 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/11 17:10:06 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:02:31 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	loop(t_data *game)
 	wall_create(game);
 	door(game);
 	collectible(game);
-	char_put(game);
+	coin_animation(game);
 	eating_diamonds(game);
+	open_door2(game);
+	char_put(game);	
 	return (0);
 }
