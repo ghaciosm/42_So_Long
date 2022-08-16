@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:13:12 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/15 14:02:31 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:00:47 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ void	char_put(t_data *game)
 	mlx_put_image_to_window(game -> mlx, game -> win, game -> image3, game->p_x, game->p_y);
 }
 
+void	enemy_put(t_data *game)
+{
+	int	i;
+	i = 0;
+	while (i < game->e_co)
+	{
+		i = 0;
+		mlx_put_image_to_window(game->mlx, game->win, game->images->enemy[i], game->player[i].x * 64, game->player[i].y * 64);
+		i++;
+	}
+}
 int	loop(t_data *game)
 {
 	put_image(game);
@@ -27,8 +38,10 @@ int	loop(t_data *game)
 	door(game);
 	collectible(game);
 	coin_animation(game);
+	enemy_animation(game);
 	eating_diamonds(game);
 	open_door2(game);
-	char_put(game);	
+	char_put(game);
+	enemy_put(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:13:01 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/10 15:23:18 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:56:14 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,61 @@ int	map_checker(t_data *game, int i)
 	if (game -> x != i)
 		return (ft_error("Dikdörtgen değil!!!"));
 	return (1);
+}
+
+int	collectible_check(t_data *game)
+{
+	int	x;
+	int	y;
+	y = 0;
+	while(y < game->y - 1)
+	{
+		x = 0;
+		while (game->a[y][x] != '\n')
+		{
+			if (game->a[y][x] == 'C')
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (ft_error("Koleksiyon yok!!"));
+}
+
+int exit_check(t_data *game)
+{
+    int x;
+    int y;
+    y = 0;
+    while(y < game->y - 1)
+    {
+        x = 0;
+        while (game->a[y][x] != '\n')
+        {
+            if (game->a[y][x] == 'E')
+                return (1);
+            x++;
+        }
+        y++;
+    }
+    return (ft_error("Exit yok!!"));
+}
+
+int start_check(t_data *game)
+{
+    int x;
+    int y;
+    y = 0;
+    while(y < game->y - 1)
+    {
+        x = 0;
+        while (game->a[y][x] != '\n')
+        {
+            if (game->a[y][x] == 'P')
+                return (1);
+            x++;
+        }
+        y++;
+    }
+    return (ft_error("Başlangıç yok!!"));
 }

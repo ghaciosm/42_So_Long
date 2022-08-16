@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 13:55:12 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/15 13:51:36 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:01:51 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # define D 2
 # define W 13
 
+typedef struct	s_player
+{
+	int	x;
+	int y;
+}	t_player;
+
 typedef struct	s_door
 {
 	void	*door1;
@@ -38,30 +44,33 @@ typedef struct	s_door
 typedef struct	s_images
 {
 	void	**coin;
+	void	**enemy;
 }	t_images;
 
 typedef struct	s_data
 {
-	int		x;
-	int		y;
-	int		p_x;
-	int		p_y;
-	void	*mlx;
-	void	*win;
-	char	**a;	
-	int		i;
-	void	*image;
-	void	*image2;
-	void	*image3;
-	void	*image4;
-	void	*image5;
-	int		width;
-	int		height;
-	int		g;
-	t_door	*door;
-	int		a_c;
+	int			x;
+	int			y;
+	int			p_x;
+	int			p_y;	
+	int			i;
+	int			width;
+	int			height;
+	int			g;
+	int			a_c;
+	int			e_c;
+	int			e_co;
+	char		**a;
+	void		*mlx;
+	void		*win;
+	void		*image;
+	void		*image2;
+	void		*image3;
+	void		*image4;
+	void		*image5;
+	t_door		*door;
 	t_images	*images;
-
+	t_player	*player;
 }	t_data;
 
 int		key_states(int keycode, t_data *game);
@@ -85,5 +94,15 @@ void    open_door2(t_data *game);
 void    image_coin(t_data *game);
 void    coin_put(t_data *game);
 void    coin_animation(t_data *game);
+int		start_check(t_data *game);
+int		exit_check(t_data *game);
+int		collectible_check(t_data *game);
+void	enemy_check(t_data *game);
+void	put_enemy(t_data *game);
+void	image_enemy(t_data *game);
+void	image_coin(t_data *game);
+void	enemy(t_data  *game);
+void    enemy_animation(t_data *game);
+void	enemy_move(t_data *game);
 
 #endif

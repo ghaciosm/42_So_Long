@@ -6,7 +6,7 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:56:43 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/15 13:57:53 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/16 14:51:39 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	map_reader(int fd, t_data *game)
 		i++;
 	}
 	game -> y = i;
-	if (!(map_checker(game, i)) || !(map_charcheck(game)))
+	if (!(map_checker(game, i)) || !(map_charcheck(game)) ||
+			!(exit_check(game)) || !(collectible_check(game))
+			|| !(start_check(game)))
 		return (0);
 	return (1);
 }
@@ -58,7 +60,7 @@ int	checker(char **av, t_data *game)
 
 int	eating_diamonds(t_data *game)
 {
-	if(game->a[game->p_y / 64][game->p_x / 64] == 'C')
+	if (game->a[game->p_y / 64][game->p_x / 64] == 'C')
 	{
 		game->a[game->p_y / 64][game->p_x / 64] = '0';
 	}
@@ -68,23 +70,25 @@ int	eating_diamonds(t_data *game)
 int	main(int ac, char **av)
 {
 	t_data	*game;
+
+	if (ac != 2)
+		return (0);
 	game = (t_data *)malloc(sizeof(t_data));
 	game->door = (t_door *)malloc(sizeof(t_door));
 	game->images = (t_images *)malloc(sizeof(t_images));
-	game -> width = 250;
-	game -> height = 250;
-	game -> g = 0;
-	game -> a_c = 0;
-	if (ac == 2)
-	{
-		if (checker(av, game))
-			exit (0);
-		game -> mlx = mlx_init();
-		game -> win = mlx_new_window(game -> mlx, 64 * game -> x, 64 * game -> y, "title");
-		mlx_key_hook(game -> win, &key_states, game);
-		image_file(game);
-		mlx_loop_hook(game -> mlx, &loop, game);	
-		mlx_loop(game -> mlx);
-	}
+	game->width = 250;
+	game->height = 250;
+	game->g = 0;
+	game->a_c = 0;
+	game->e_c = 0;
+	if (checker(av, game))
+		exit (0);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, 64 * game->x, 64 * game -> y, "Title");
+	image_file(game);
+	mlx_key_hook(game -> win, &key_states, game);
+	//enemy_move(game);
+	mlx_loop_hook(game -> mlx, &loop, game);	
+	mlx_loop(game -> mlx);
 	return (0);
 }
