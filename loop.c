@@ -26,8 +26,7 @@ void	enemy_put(t_data *game)
 	i = 0;
 	while (i < game->e_co)
 	{
-		i = 0;
-		mlx_put_image_to_window(game->mlx, game->win, game->images->enemy[i], game->player[i].x * 64, game->player[i].y * 64);
+		mlx_put_image_to_window(game->mlx, game->win, game->images->enemy[game->e_c], game->player[i].x * 64 + 10, game->player[i].y * 64 + 10);
 		i++;
 	}
 }
@@ -43,5 +42,8 @@ int	loop(t_data *game)
 	open_door2(game);
 	char_put(game);
 	enemy_put(game);
+	enemy_move(game);
+	enemy_exit(game);
+	pixel_put(game);
 	return (0);
 }

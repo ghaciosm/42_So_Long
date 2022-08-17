@@ -102,41 +102,7 @@ void	collectible(t_data	*game)
 	}
 }
 
-void    enemy(t_data  *game)
-{
-    game->player = (t_player *)malloc(sizeof(t_player) * 10);
-	int i;
-    int j;
 
-    i = 0;
-	game->e_co = 0;
-    while (i < game -> y)
-    {
-        j = 0;
-        while (game -> a[i][j] != '\0')
-        {
-            if (game -> a[i][j] == 'N')
-            {
-				game->player[game->e_co].x = j;
-				game->player[game->e_co].y = i;
-				game->e_co++;
-            }
-            j++;
-        }
-        i++;
-    }
-}
-/*void	enemy_move(t_data *game)
-{
-	int	a;
-
-	a = 1;
-	while (game->player[game->e_co].x + 1 != '1')
-		{
-			game->player[game->e_co].x = game->player[game->e_co].x + a;
-		}	//game->player[e_c].y
-
-}*/
 
 void	door(t_data *game)
 {
@@ -152,7 +118,7 @@ void	door(t_data *game)
 			if (game -> a[i][j] == 'E')
 			{
 				mlx_put_image_to_window(game -> mlx, game -> win,
-						game -> image5, j * 64, i * 64);
+						game->images->door[game->x_c], j * 64, i * 64);
 			}
 			j++;
 		}
@@ -166,19 +132,18 @@ void	image_file(t_data *game)
 			"2.xpm", &(game -> width), &(game -> height));
 	game -> image2 = mlx_xpm_file_to_image(game -> mlx,
 			"1.xpm", &(game -> width), &(game -> height));
-	//game -> image5 = mlx_xpm_file_to_image(game -> mlx,
-	//		"5.xpm", &(game -> width), & (game -> height));
 	game -> image3 = mlx_xpm_file_to_image(game -> mlx,
 			"3.xpm", &(game -> width), & (game -> height));
-	game -> image5 = mlx_xpm_file_to_image(game -> mlx,
-			"5.xpm", &(game -> width), & (game -> height));
+	game->images->door = (void **)malloc(sizeof(void*) * 4);
+	game->images->door[0] = mlx_xpm_file_to_image(game -> mlx,
+			"0/door/1.xpm", &(game -> width), & (game -> height));
+	game->images->door[1] = mlx_xpm_file_to_image(game -> mlx,
+			"0/door/2.xpm", &(game -> width), & (game -> height));
+	game->images->door[2] = mlx_xpm_file_to_image(game -> mlx,
+			"0/door/3.xpm", &(game -> width), & (game -> height));
+	game->images->door[3] = mlx_xpm_file_to_image(game -> mlx,
+			"0/door/4.xpm", &(game -> width), & (game -> height));
 	chr_create(game);
-	game->door -> door2 = mlx_xpm_file_to_image(game -> mlx,
-			"door2.xpm", &(game -> width), & (game -> height));
-	game->door -> door3 = mlx_xpm_file_to_image(game -> mlx,
-			"door3.xpm", &(game -> width), & (game -> height));
-	game->door -> door4 = mlx_xpm_file_to_image(game -> mlx,
-			"door4.xpm", &(game -> width), & (game -> height));
 	image_coin(game);
 	image_enemy(game);
 	enemy(game);

@@ -29,21 +29,13 @@ typedef struct	s_player
 {
 	int	x;
 	int y;
+	int	a;
 }	t_player;
-
-typedef struct	s_door
-{
-	void	*door1;
-	void	*door2;
-	void	*door3;
-	void	*door4;
-	int		i;
-	int		j;
-}	t_door;
 
 typedef struct	s_images
 {
 	void	**coin;
+	void	**door;
 	void	**enemy;
 }	t_images;
 
@@ -58,6 +50,7 @@ typedef struct	s_data
 	int			height;
 	int			g;
 	int			a_c;
+	int			x_c;
 	int			e_c;
 	int			e_co;
 	char		**a;
@@ -67,8 +60,6 @@ typedef struct	s_data
 	void		*image2;
 	void		*image3;
 	void		*image4;
-	void		*image5;
-	t_door		*door;
 	t_images	*images;
 	t_player	*player;
 }	t_data;
@@ -104,5 +95,7 @@ void	image_coin(t_data *game);
 void	enemy(t_data  *game);
 void    enemy_animation(t_data *game);
 void	enemy_move(t_data *game);
+void	enemy_exit(t_data *game);
+void	pixel_put(t_data *game);
 
 #endif

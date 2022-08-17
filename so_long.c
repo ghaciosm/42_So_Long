@@ -67,6 +67,29 @@ int	eating_diamonds(t_data *game)
 	return (0);
 }
 
+void	pixel_put(t_data *game)
+{
+	int		i;
+	int		j;
+	char	*move;
+	
+	i = 494;
+	while (i <510)
+	{
+		j = 2;
+		while(j < 63)
+		{
+			mlx_pixel_put ( game->mlx, game->win, j, i, 0xFFCC99);
+			j++;
+		}
+		i++;
+	}
+	move = ft_itoa(game->g);
+	char	*str = ft_strjoin("Move: ", move);
+	mlx_string_put ( game->mlx, game->win, 5, 506, 0x660000, str);
+	free(move);
+	free(str);
+}
 int	main(int ac, char **av)
 {
 	t_data	*game;
@@ -74,20 +97,19 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	game = (t_data *)malloc(sizeof(t_data));
-	game->door = (t_door *)malloc(sizeof(t_door));
 	game->images = (t_images *)malloc(sizeof(t_images));
 	game->width = 250;
 	game->height = 250;
 	game->g = 0;
 	game->a_c = 0;
 	game->e_c = 0;
+	game->x_c = 0;
 	if (checker(av, game))
 		exit (0);
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, 64 * game->x, 64 * game -> y, "Title");
 	image_file(game);
 	mlx_key_hook(game -> win, &key_states, game);
-	//enemy_move(game);
 	mlx_loop_hook(game -> mlx, &loop, game);	
 	mlx_loop(game -> mlx);
 	return (0);
