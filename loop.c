@@ -17,19 +17,24 @@
 
 void	char_put(t_data *game)
 {
-	mlx_put_image_to_window(game -> mlx, game -> win, game -> image3, game->p_x, game->p_y);
+	mlx_put_image_to_window(game -> mlx, game -> win,
+		game -> image3, game->p_x, game->p_y);
 }
 
 void	enemy_put(t_data *game)
 {
 	int	i;
+
 	i = 0;
 	while (i < game->e_co)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->images->enemy[game->e_c], game->player[i].x * 64 + 10, game->player[i].y * 64 + 10);
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->images->enemy[game->e_c],
+			game->player[i].x * 64 + 10, game->player[i].y * 64 + 10);
 		i++;
 	}
 }
+
 int	loop(t_data *game)
 {
 	put_image(game);

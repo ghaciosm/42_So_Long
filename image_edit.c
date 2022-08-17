@@ -27,7 +27,7 @@ void	put_image(t_data *game)
 		while (b < game -> x)
 		{
 			mlx_put_image_to_window(game -> mlx,
-						game -> win, game -> image, b * 64, a * 64);
+				game -> win, game -> image, b * 64, a * 64);
 			b++;
 		}
 		a++;
@@ -48,7 +48,7 @@ void	wall_create(t_data *game)
 			if (game -> a[i][j] == '1')
 			{
 				mlx_put_image_to_window(game -> mlx,
-							game -> win, game -> image2, j * 64, i * 64);
+					game -> win, game -> image2, j * 64, i * 64);
 			}
 			j++;
 		}
@@ -93,32 +93,8 @@ void	collectible(t_data	*game)
 			if (game -> a[i][j] == 'C')
 			{		
 				mlx_put_image_to_window(game -> mlx, game -> win,
-						game -> images->coin[game->a_c],
-						j * 64 + 17, i * 64 + 17);
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-
-
-void	door(t_data *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < game -> y)
-	{
-		j = 0;
-		while (game -> a[i][j] != '\0')
-		{
-			if (game -> a[i][j] == 'E')
-			{
-				mlx_put_image_to_window(game -> mlx, game -> win,
-						game->images->door[game->x_c], j * 64, i * 64);
+					game -> images->coin[game->a_c],
+					j * 64 + 17, i * 64 + 17);
 			}
 			j++;
 		}
@@ -134,7 +110,7 @@ void	image_file(t_data *game)
 			"1.xpm", &(game -> width), &(game -> height));
 	game -> image3 = mlx_xpm_file_to_image(game -> mlx,
 			"3.xpm", &(game -> width), & (game -> height));
-	game->images->door = (void **)malloc(sizeof(void*) * 4);
+	game->images->door = (void **)malloc(sizeof(void *) * 4);
 	game->images->door[0] = mlx_xpm_file_to_image(game -> mlx,
 			"0/door/1.xpm", &(game -> width), & (game -> height));
 	game->images->door[1] = mlx_xpm_file_to_image(game -> mlx,

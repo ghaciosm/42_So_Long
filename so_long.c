@@ -15,12 +15,6 @@
 #include <stdio.h>
 #include <stdint.h>
 
-int	ft_error(char *str)
-{
-	ft_printf("Error\n%s", str);
-	return (0);
-}
-
 int	map_reader(int fd, t_data *game)
 {
 	int	i;
@@ -37,9 +31,9 @@ int	map_reader(int fd, t_data *game)
 		i++;
 	}
 	game -> y = i;
-	if (!(map_checker(game, i)) || !(map_charcheck(game)) ||
-			!(exit_check(game)) || !(collectible_check(game))
-			|| !(start_check(game)))
+	if (!(map_checker(game, i)) || !(map_charcheck(game))
+		|| !(exit_check(game)) || !(collectible_check(game))
+		|| !(start_check(game)))
 		return (0);
 	return (1);
 }
@@ -72,24 +66,26 @@ void	pixel_put(t_data *game)
 	int		i;
 	int		j;
 	char	*move;
-	
+	char	*str;
+
 	i = 494;
-	while (i <510)
+	while (i < 510)
 	{
 		j = 2;
-		while(j < 63)
+		while (j < 63)
 		{
-			mlx_pixel_put ( game->mlx, game->win, j, i, 0xFFCC99);
+			mlx_pixel_put (game->mlx, game->win, j, i, 0xFFCC99);
 			j++;
 		}
 		i++;
 	}
 	move = ft_itoa(game->g);
-	char	*str = ft_strjoin("Move: ", move);
-	mlx_string_put ( game->mlx, game->win, 5, 506, 0x660000, str);
+	str = ft_strjoin("Move: ", move);
+	mlx_string_put (game->mlx, game->win, 5, 506, 0x660000, str);
 	free(move);
 	free(str);
 }
+
 int	main(int ac, char **av)
 {
 	t_data	*game;
@@ -107,10 +103,11 @@ int	main(int ac, char **av)
 	if (checker(av, game))
 		exit (0);
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 64 * game->x, 64 * game -> y, "Title");
+	game->win = mlx_new_window(game->mlx,
+			64 * game->x, 64 * game -> y, "Title");
 	image_file(game);
 	mlx_key_hook(game -> win, &key_states, game);
-	mlx_loop_hook(game -> mlx, &loop, game);	
+	mlx_loop_hook(game -> mlx, &loop, game);
 	mlx_loop(game -> mlx);
 	return (0);
 }

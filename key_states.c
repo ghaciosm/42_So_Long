@@ -19,7 +19,7 @@ int	key_states2(int keycode, t_data *game)
 {
 	if (keycode == D)
 	{
-		if(game->a[game->p_y / 64][(game->p_x / 64) + 1] != '1')
+		if (game->a[game->p_y / 64][(game->p_x / 64) + 1] != '1')
 		{
 			game->p_x += 64;
 			game -> g++;
@@ -27,7 +27,7 @@ int	key_states2(int keycode, t_data *game)
 	}
 	if (keycode == S)
 	{
-		if(game->a[game->p_y / 64 + 1][game->p_x / 64] != '1')
+		if (game->a[game->p_y / 64 + 1][game->p_x / 64] != '1')
 		{
 			game->p_y += 64;
 			game -> g++;
@@ -46,7 +46,7 @@ int	key_states(int keycode, t_data *game)
 	}
 	if (keycode == W)
 	{
-		if(game->a[game->p_y / 64 + - 1][game->p_x / 64] != '1')
+		if (game->a[game->p_y / 64 - 1][game->p_x / 64] != '1')
 		{
 			game->p_y -= 64;
 			game -> g++;
@@ -54,7 +54,7 @@ int	key_states(int keycode, t_data *game)
 	}
 	if (keycode == A)
 	{
-		if(game->a[game->p_y / 64][(game->p_x / 64) - 1] != '1')
+		if (game->a[game->p_y / 64][(game->p_x / 64) - 1] != '1')
 		{
 			game->p_x -= 64;
 			game -> g++;

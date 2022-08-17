@@ -25,21 +25,21 @@
 # define D 2
 # define W 13
 
-typedef struct	s_player
+typedef struct s_player
 {
 	int	x;
-	int y;
+	int	y;
 	int	a;
 }	t_player;
 
-typedef struct	s_images
+typedef struct s_images
 {
 	void	**coin;
 	void	**door;
 	void	**enemy;
 }	t_images;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int			x;
 	int			y;
@@ -79,12 +79,12 @@ void	chr_create(t_data *game);
 int		key_states(int keycode, t_data *game);
 int		key_states2(int keycode, t_data *game);
 int		eating_diamonds(t_data *game);
-void    door(t_data  *game);
+void	door(t_data *game);
 int		open_door(t_data *game);
-void    open_door2(t_data *game);
-void    image_coin(t_data *game);
-void    coin_put(t_data *game);
-void    coin_animation(t_data *game);
+void	open_door2(t_data *game);
+void	image_coin(t_data *game);
+void	coin_put(t_data *game);
+void	coin_animation(t_data *game);
 int		start_check(t_data *game);
 int		exit_check(t_data *game);
 int		collectible_check(t_data *game);
@@ -92,8 +92,8 @@ void	enemy_check(t_data *game);
 void	put_enemy(t_data *game);
 void	image_enemy(t_data *game);
 void	image_coin(t_data *game);
-void	enemy(t_data  *game);
-void    enemy_animation(t_data *game);
+void	enemy(t_data *game);
+void	enemy_animation(t_data *game);
 void	enemy_move(t_data *game);
 void	enemy_exit(t_data *game);
 void	pixel_put(t_data *game);

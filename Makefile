@@ -26,7 +26,7 @@ clean :
 	make clean -C mlx
 
 fclean : clean
-	rm -rf $(NAME)
+	rm -rf so_long
 	make fclean -C ft_printf
 
 re : fclean all
