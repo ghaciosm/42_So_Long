@@ -105,11 +105,11 @@ void	collectible(t_data	*game)
 void	image_file(t_data *game)
 {
 	game -> image = mlx_xpm_file_to_image(game -> mlx,
-			"2.xpm", &(game -> width), &(game -> height));
+			"0/2.xpm", &(game -> width), &(game -> height));
 	game -> image2 = mlx_xpm_file_to_image(game -> mlx,
-			"1.xpm", &(game -> width), &(game -> height));
+			"0/1.xpm", &(game -> width), &(game -> height));
 	game -> image3 = mlx_xpm_file_to_image(game -> mlx,
-			"3.xpm", &(game -> width), & (game -> height));
+			"0/3.xpm", &(game -> width), & (game -> height));
 	game->images->door = (void **)malloc(sizeof(void *) * 4);
 	game->images->door[0] = mlx_xpm_file_to_image(game -> mlx,
 			"0/door/1.xpm", &(game -> width), & (game -> height));

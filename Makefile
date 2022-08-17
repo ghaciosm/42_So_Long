@@ -5,10 +5,7 @@ PRINTF = ft_printf/libftprintf.a
 LINE = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 MLX = mlx/libmlx.a
 	
-all :
-	$(MAKE) tmp -j 8
-
-tmp : $(NAME)
+all : $(NAME)
 	gcc *.c $(PRINTF) $(LINE) $(LFLAGS) $(FLAGS) $(MLX) -o so_long
 	@echo "SUCCESS"
 
