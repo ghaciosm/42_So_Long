@@ -13,9 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "get_next_line/get_next_line.h"
-# include "ft_printf/ft_printf.h"
-# include "mlx/mlx.h"
+# include "../others/get_next_line/get_next_line.h"
+# include "../others/ft_printf/ft_printf.h"
+# include "../others/mlx/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
 
