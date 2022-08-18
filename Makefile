@@ -12,6 +12,10 @@ all : $(NAME)
 $(NAME) : $(PRINTF) $(MLX)
 	cp others/mlx/libmlx.a .
 
+bonus : $(NAME)
+	gcc bonus/*.c $(PRINTF) $(LINE) $(LFLAGS) $(FLAGS) $(MLX) -o so_long_bonus
+	@echo "SUCCESS"
+
 $(PRINTF) :
 	make -C others/ft_printf
 
@@ -23,7 +27,14 @@ clean :
 	make clean -C others/mlx
 
 fclean : clean
+	rm -rf libmlx.a
 	rm -rf so_long
+	rm -rf so_long_bonus
 	make fclean -C others/ft_printf
 
+norm :
+	norminette others/ft_printf others/get_next_line bonus game
+
 re : fclean all
+
+.PHONY: re clean fclean norm

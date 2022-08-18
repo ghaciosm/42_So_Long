@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -21,6 +21,20 @@ void	char_put(t_data *game)
 		game -> image3, game->p_x, game->p_y);
 }
 
+void	enemy_put(t_data *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->e_co)
+	{
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->images->enemy[game->e_c],
+			game->player[i].x * 64 + 10, game->player[i].y * 64 + 10);
+		i++;
+	}
+}
+
 int	loop(t_data *game)
 {
 	put_image(game);
@@ -28,8 +42,13 @@ int	loop(t_data *game)
 	door(game);
 	collectible(game);
 	coin_animation(game);
+	enemy_animation(game);
 	eating_diamonds(game);
 	open_door2(game);
 	char_put(game);
+	enemy_put(game);
+	enemy_move(game);
+	enemy_exit(game);
+	pixel_put(game);
 	return (0);
 }

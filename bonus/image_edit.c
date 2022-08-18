@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -121,4 +121,6 @@ void	image_file(t_data *game)
 			"0/door/4.xpm", &(game -> width), & (game -> height));
 	chr_create(game);
 	image_coin(game);
+	image_enemy(game);
+	enemy(game);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -59,6 +59,31 @@ int	eating_diamonds(t_data *game)
 		game->a[game->p_y / 64][game->p_x / 64] = '0';
 	}
 	return (0);
+}
+
+void	pixel_put(t_data *game)
+{
+	int		i;
+	int		j;
+	char	*move;
+	char	*str;
+
+	i = 494;
+	while (i < 510)
+	{
+		j = 2;
+		while (j < 63)
+		{
+			mlx_pixel_put (game->mlx, game->win, j, i, 0xFFCC99);
+			j++;
+		}
+		i++;
+	}
+	move = ft_itoa(game->g);
+	str = ft_strjoin("Move: ", move);
+	mlx_string_put (game->mlx, game->win, 5, 506, 0x660000, str);
+	free(move);
+	free(str);
 }
 
 int	main(int ac, char **av)
